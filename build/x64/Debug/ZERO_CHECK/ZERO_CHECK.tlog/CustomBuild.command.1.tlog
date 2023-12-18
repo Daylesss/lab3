@@ -1,0 +1,10 @@
+^D:\IT\PRG\CPP_CODE\LABS\LAB3\BUILD\CMAKEFILES\2DE433E52360DC4CB4F657C4D6BDE424\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/IT/prg/cpp_code/labs/lab3 -BD:/IT/prg/cpp_code/labs/lab3/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/IT/prg/cpp_code/labs/lab3/build/lab3.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -33,38 +33,21 @@ class FSM{
     cur_state = start_state;
     for (int i=0; i<str.size(); i++){
         if (alphabet.count(str[i])==0){
-            // std::cout << "Alphabet"<<std::to_string(alphabet.count(str[i])) << "\n";
             return false;
         }
         std::pair<T, int> state_and_symbol{str[i], cur_state};
-        // std::cout << "Pair "<<std::to_string(state_and_symbol.first)<<std::to_string(state_and_symbol.second) << "\n";
         auto n = transitions.find(state_and_symbol);
-        // std::cout << "N "<<std::to_string(n->second) << "\n";
         if (n!= transitions.end()){
-            std::cout<< n->second;
             cur_state = n->second;
         }
         else{
-            std::cout<< "END??\n";
             return false;
         }
 
     }
-    std::cout<< "STATE"<<cur_state<< "\n";
     if (final_states.count(cur_state)==0){
-        std::cout<< "NO FINAL STATE\n";
         return false;
     }
-    std::cout<< "OK\n";
     return true;
     };
-    // return true;
-
-    // bool run(std::vector<T> str);
-    // bool test(T);
-    // bool test(T str){
-    // std::cout << str;
-    // return true;
-    // };
-    // };
 };
