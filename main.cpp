@@ -46,8 +46,9 @@ int main(){
     char one = '1';
     char nul = '0';
     char div = '/';
+    char another = 't';
 
-    std::set<char> alphabet2({one, nul, div});
+    std::set<char> alphabet2({one, nul, div, another});
     std::map<std::pair<char, int>, int> transitions2;
 
     //Таблица переходов для автомата принимающего только "строки" вида {двоичное целое}/{двоичное целое}...
@@ -79,5 +80,41 @@ int main(){
     }
     else{
         std::cout << "2nd False\n\n";
+    }
+
+    //третий автомат
+    std::unordered_set<int> states3({0, 1, 2});
+    int start_state3 = 0;
+    std::unordered_set<int> final_states3({1});
+
+    // char one = '1';
+    // char nul = '0';
+    // char div = '/';
+    // char another = 't';
+
+    std::set<char> alphabet3({one, nul, div, another});
+    std::map<std::pair<char, int>, int> transitions3;
+
+    //Таблица переходов для автомата принимающего только "строки" вида {двоичное целое}/{двоичное целое}...
+
+    transitions3.emplace(std::pair<char, int>(nul, 0), 1);
+    transitions3.emplace(std::pair<char, int>(div, 0), 1);
+    transitions3.emplace(std::pair<char, int>(one, 0), 1);
+    transitions3.emplace(std::pair<char, int>(another, 0), 1);
+
+    transitions3.emplace(std::pair<char, int>(div, 1), 2);
+    transitions3.emplace(std::pair<char, int>(one, 1), 2);
+    transitions3.emplace(std::pair<char, int>(nul, 1), 2);
+    transitions3.emplace(std::pair<char, int>(another, 1), 2);
+
+
+    FSM<char> fsm3(states3, start_state3, final_states3, alphabet3, transitions3);
+    std::vector<char> _str3{another};
+
+    if (fsm3.run(_str3)){
+        std::cout << "3rd True\n\n";
+    }
+    else{
+        std::cout << "3rd False\n\n";
     }
 }
